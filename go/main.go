@@ -52,7 +52,7 @@ func main() {
 		}
 	}
 
-	for i := range posts {
+	for i := range postsLen {
 
 		for _, tag := range posts[i].Tags {
 			for _, otherPostIdx := range tagMap[tag] {
@@ -65,7 +65,8 @@ func main() {
 		top5 := [topN * 2]int{}
 		minTags := byte(0)
 
-		for j, count := range taggedPostCount {
+		for j := range postsLen {
+			count := taggedPostCount[j]
 			if count > minTags {
 				upperBound := (topN - 2) * 2
 
